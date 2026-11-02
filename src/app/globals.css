@@ -14,6 +14,8 @@
 
   html {
     overscroll-behavior-y: none;
+    height: 100%;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
@@ -23,6 +25,25 @@
     overscroll-behavior-y: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    min-height: 100%;
+    overflow-x: clip;
+  }
+}
+
+/* Keep the viewport fixed while preserving momentum in intentional scroll regions. */
+@media (max-width: 639px) {
+  main {
+    min-width: 0;
+    padding-left: max(1rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1rem, env(safe-area-inset-right, 0px));
+  }
+
+  input, select, textarea, button {
+    scroll-margin-block: 1rem 6rem;
+  }
+
+  input, select, textarea {
+    font-size: max(16px, 1em);
   }
 }
 
